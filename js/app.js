@@ -13,3 +13,25 @@ let company = {
         ]
     }
 };
+
+function calculateSalarySum(department) {
+    let total = 0;
+
+    if (Array.isArray(department)) {
+        for (let employee of department) {
+            total += employee.salary;
+        }
+    }else{
+        for (let subDepartment in department) {
+            total += calculateSalarySum(department[subDepartment]);
+        }
+    }
+    return total;
+}
+
+let totalSalaries = calculateSalarySum(company);
+console.log(totalSalaries);
+
+function getResult() {
+    alert('Open console (F12).')
+}
